@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+# Displays To infinity and beyond indefinitely
+
+# Define signal handler for SIGTERM
+term_handler() {
+    echo "I am invincible!!!"
+    exit 0
+}
+
+# Register the signal handler
+trap 'term_handler' SIGTERM
+
+# Infinite loop
+while true; do
+    echo "To infinity and beyond"
+    sleep 2
+done

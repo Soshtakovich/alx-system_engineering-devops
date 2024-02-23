@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# Stops highlander.
+
+# Find the PID of the 7-highlander process
+pid=$(pgrep -f "7-highlander")
+
+# Check if the process exists
+if [ -n "$pid" ]; then
+    # If it exists, stop the process by sending a termination signal
+    kill -TERM "$pid"
+    echo "Process 7-highlander (PID: $pid) has been stopped."
+else
+    echo "Process 7-highlander is not running."
+fi
