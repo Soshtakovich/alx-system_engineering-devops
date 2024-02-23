@@ -4,7 +4,6 @@
 # Define signal handler for SIGTERM
 term_handler() {
     echo "I am invincible!!!"
-    exit 0
 }
 
 # Register the signal handler
