@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# This script displays listening sockets with the PID and name of the program to which each socket belongs
+
+# Get listening ports and associated processes
+netstat -tuln | grep 'LISTEN' | while read line; do
+    protocol=$(echo "$line" | awk '{print $1}')
+    port=$(echo "$line" | awk '{print $4}' | awk -F ':' '{print $NF}')
+    pid=$(echo "$line" | awk '{print $NF}')
+    process_name=$(ps -p "$pid" -o comm=)
+    echo "Protocol: $protocol, Port: $port, PID: $pid, Process Name: $process_name"
+done
