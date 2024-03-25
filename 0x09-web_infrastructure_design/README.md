@@ -61,8 +61,9 @@ Downtime when maintenance needed (like deploying new code web server needs to be
 Cannot scale if too much incoming traffic
 Please, remember that everything must be written in English to further your technical ability in a variety of settings.
 
-Add URLs here:
+URLs here:
 https://imgur.com/a/3qQNsKm 
+
 Repo:
 
 GitHub repository: alx-system_engineering-devops
@@ -93,8 +94,9 @@ Security issues (no firewall, no HTTPS)
 No monitoring
 Please, remember that everything must be written in English to further your technical ability in a variety of settings.
 
-Add URLs here:
+URLs here:
 https://imgur.com/a/3P55kaj 
+
 Repo:
 
 GitHub repository: alx-system_engineering-devops
@@ -123,8 +125,9 @@ Why having only one MySQL server capable of accepting writes is an issue
 Why having servers with all the same components (database, web server and application server) might be a problem
 Please, remember that everything must be written in English to further your technical ability in a variety of settings.
 
-Add URLs here:
+URLs here:
 https://imgur.com/a/ZwYUSNc 
+
 Repo:
 
 GitHub repository: alx-system_engineering-devops
