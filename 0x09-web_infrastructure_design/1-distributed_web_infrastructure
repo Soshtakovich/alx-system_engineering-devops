@@ -1,0 +1,46 @@
+
+
+1. Load Balancer (HAProxy):
+
+Why: Adding a load balancer enables distribution of incoming traffic across multiple servers, improving performance, and reliability.
+Distribution Algorithm: Round-robin. It works by sequentially assigning incoming requests to each server in a circular manner.
+Active-Passive Setup: In an active-passive setup, the load balancer directs all traffic to the active server while the passive server remains on standby, ready to take over if the active server fails.
+2. Web Servers (Nginx):
+
+Why: Nginx serves as the web server to handle incoming HTTP requests and serve static content efficiently.
+3. Application Server:
+
+Why: The application server hosts the application logic and processes dynamic content requests.
+4. Application Files:
+
+Why: These files contain the codebase of the website/application and are deployed on the application server.
+5. Database (MySQL):
+
+Why: MySQL serves as the database management system to store and manage website/application data.
+Specifics about the Infrastructure:
+
+Load Balancer Configuration: Configured with a round-robin distribution algorithm, ensuring that incoming requests are evenly distributed among the web servers.
+
+Active-Passive Setup: The load balancer enables an active-passive setup, where one server actively handles incoming requests while the other server remains on standby.
+
+Primary-Replica Database Cluster (Master-Slave):
+
+How It Works: In a primary-replica setup, the primary (master) database node handles write operations and replicates data changes to the replica (slave) nodes. The replica nodes can handle read operations, offloading some of the read traffic from the primary node.
+Difference between Primary and Replica Nodes:
+
+The primary node handles write operations and serves as the authoritative source for data changes.
+The replica nodes replicate data from the primary node and can handle read operations, providing redundancy and scalability for read-heavy workloads.
+Issues with this Infrastructure:
+
+Single Points of Failure (SPOF):
+The load balancer, web servers, and application server still present single points of failure. If any of these components fail, it can result in downtime for the website.
+Security Issues:
+Lack of firewall protection exposes the infrastructure to potential security threats.
+Lack of HTTPS encryption leaves data transmitted between clients and servers vulnerable to interception.
+Monitoring:
+Without monitoring tools in place, it's challenging to track the performance and health of the infrastructure, making it difficult to identify and address issues promptly.
+
+
+
+
+

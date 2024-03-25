@@ -1,0 +1,41 @@
+
+
+
+1. Server:
+
+A single physical or virtual machine where all components of the infrastructure reside. It's equipped with an operating system (e.g., Linux) and necessary software for hosting the website.
+2. Web Server (Nginx):
+
+Nginx serves as the web server in this infrastructure. It handles incoming HTTP requests from clients and serves static content efficiently. Additionally, Nginx can act as a reverse proxy to pass dynamic content requests to the application server.
+3. Application Server:
+
+The application server hosts the application logic and processes dynamic content requests. In this setup, we can use PHP as the server-side scripting language, alongside a web server module like PHP-FPM to handle PHP scripts.
+4. Application Files:
+
+This includes the code base of the website/application. It contains HTML, CSS, JavaScript, PHP files, or any other programming languages used to build the website/application. These files are stored on the application server.
+5. Database (MySQL):
+
+MySQL serves as the database management system to store and manage the website/application data. It can handle structured data efficiently and supports SQL queries for data retrieval and manipulation. The database stores user information, content data, and other relevant information for the website.
+Specifics about the Infrastructure:
+
+Server: A server is a computer system that provides resources, data, services, or programs to other computers or users over a network.
+
+Domain Name: The domain name (e.g., foobar.com) is a human-readable label that maps to a specific IP address on the Internet. It allows users to access websites using memorable names instead of numeric IP addresses.
+
+www DNS Record: The "www" DNS record is a type of CNAME (Canonical Name) record that redirects requests for "www.foobar.com" to the server's IP address (e.g., 8.8.8.8).
+
+Web Server's Role: The web server (Nginx) handles HTTP requests from clients and serves static content efficiently. It can also act as a reverse proxy to forward dynamic content requests to the application server.
+
+Application Server's Role: The application server hosts the application logic and processes dynamic content requests. It interacts with the web server to generate dynamic web pages based on client requests.
+
+Database's Role: The database (MySQL) stores and manages the website/application data, including user information, content data, and other relevant information. It provides efficient data storage and retrieval through SQL queries.
+
+Communication with User's Computer: When a user requests the website www.foobar.com, the web server (Nginx) processes the request and retrieves the necessary content (static or dynamic) from the application server and/or the database. The server communicates with the user's computer over the Internet using the HTTP protocol.
+
+Issues with this Infrastructure:
+
+Single Point of Failure (SPOF): Since all components are hosted on a single server, any failure in hardware, software, or network connectivity can lead to downtime for the entire website.
+
+Downtime During Maintenance: Performing maintenance tasks such as deploying new code or restarting the web server can result in downtime for the website, affecting user accessibility.
+
+Cannot Scale with High Traffic: The infrastructure may struggle to handle a significant increase in incoming traffic, as scaling options are limited due to the single-server setup. Adding more servers or implementing load balancing would be necessary for scalability.
