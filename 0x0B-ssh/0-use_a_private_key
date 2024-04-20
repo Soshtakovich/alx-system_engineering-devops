@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# This Script connects to the server IP using the users private key
+# stored in a file school Found in the users home directory
+ssh -i ~/.ssh/school ubuntu@54.237.113.200
