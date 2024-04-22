@@ -4,7 +4,3 @@
 
 # Generate RSA key pair with specified parameters
 openssl genpkey -algorithm RSA -out school.pem -aes256 -pass pass:betty -pkeyopt rsa_keygen_bits:4096
-
-# Extract the public key from the private key
-openssl rsa -pubout -in school.pem -out school.pub
-
