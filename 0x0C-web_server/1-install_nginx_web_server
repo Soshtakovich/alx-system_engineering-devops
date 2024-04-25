@@ -9,18 +9,11 @@ apt-get update
 # Install Nginx
 apt-get install -y nginx
 
-# Set Nginx to listen on port 80
-sed -i 's/^listen\s*80\s*;$/listen 80;/g' /etc/nginx/sites-available/default
+# Configure Nginx to listen on port 80
+sed -i 's/listen 80 default_server;/listen 80;/g' /etc/nginx/sites-available/default
 
-# Restart Nginx using its init script
-/etc/init.d/nginx restart
-
-# Check if Nginx is running
-if pgrep nginx >/dev/null; then
-    echo "Nginx installed and running."
-else
-    echo "Error: Nginx is not running."
-fi
+# Reload Nginx configuration to apply changes
+kill -s HUP $(cat /var/run/nginx.pid)
 
 # Create a temporary HTML file containing "Hello World!"
 echo "<!DOCTYPE html>
@@ -33,10 +26,9 @@ echo "<!DOCTYPE html>
 </body>
 </html>" > /var/www/html/index.html
 
-# Check if Nginx returns "Hello World!" when queried
-response=$(curl -s http://localhost)
-if [[ $response == *"Hello World!"* ]]; then
-    echo "Nginx is serving 'Hello World!' correctly."
+# Check if Nginx is running
+if pgrep nginx >/dev/null; then
+    echo "Nginx installed and running."
 else
-    echo "Error: Nginx is not serving 'Hello World!' correctly."
+    echo "Error: Nginx is not running."
 fi
