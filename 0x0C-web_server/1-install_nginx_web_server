@@ -3,25 +3,20 @@
 # Nginx where it should be listening on port 80
 # Serve a page that would return a Hello World string
 
+# Update package list
+sudo apt-get update
+
 # Install nginx
-apt-get update -y
-apt-get install nginx -y
+sudo apt-get install -y nginx
 
-# Configure nginx
-echo "server {
-    listen 80 default_server;
-    listen [::]:80 default_server;
+# Create a custom HTML page with "Hello World!"
+echo "<html><body>Hello World!</body></html>" | sudo tee /var/www/html/index.html
 
-    root /var/www/html;
-    index index.html;
-
-    location / {
-        echo 'Hello World!' > index.html;
-        echo 'Content-Type: text/html' >> index.html;
-        echo '' >> index.html;
-        echo '' >> index.html;
-    }
-}" > /etc/nginx/sites-available/default
+# Configure nginx to listen on port 80
+sudo sed -i 's/listen 80 default_server;/listen 80;/g' /etc/nginx/sites-available/default
 
 # Restart nginx
-service nginx restart
+sudo service nginx restart
+
+# Print a success message
+echo "Nginx installed and configured successfully!"
