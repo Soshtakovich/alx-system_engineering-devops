@@ -1,33 +1,16 @@
 #!/usr/bin/env bash
+# Installs nginx web server
 
-# Step 1: Install Nginx
-sudo apt update
-sudo apt install nginx -y
-
-# Step 2: Create a configuration file for the redirection
-sudo tee /etc/nginx/sites-available/redirect_me <<EOF
-server {
+apt-get update
+apt-get install -y nginx
+echo "Holberton School" > /etc/nginx/html/index.html
+echo "server {
     listen 80;
-    listen [::]:80;
-
-    server_name _;
-
+    listen [::]:80 default_server;
+    root   /etc/nginx/html;
+    index  index.html;
     location /redirect_me {
-        return 301 https://example.com/new-page;
+        return 301 https://twitter.com/Emmanue17280546;
     }
-
-    # Redirect all other requests to the main server
-    location / {
-        return 301 https://example.com;
-    }
-}
-EOF
-
-# Step 3: Enable the site configuration
-sudo ln -s /etc/nginx/sites-available/redirect_me /etc/nginx/sites-enabled/
-
-# Step 4: Test Nginx configuration
-sudo nginx -t
-
-# Step 5: Restart Nginx to apply changes
-sudo systemctl restart nginx
+}" > /etc/nginx/sites-available/default
+service nginx restart
