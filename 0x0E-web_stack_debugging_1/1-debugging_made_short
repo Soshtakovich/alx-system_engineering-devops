@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 # Installing new server to serve content
-#./0-nginx_likes_port_80
-#echo "hi" > /var/run/nginx.pid
-#echo "hi" > /run/nginx.pid
 
-nginx -t && systemctl restart nginx
-if ! pidof nginx &> /dev/null; then
-  systemctl start nginx
+nginx -t
+nginx_pid=$(pidof nginx)
+occupied_port=$(netstat -tln | grep ':80')
+
+if [[ -n "$occupied_port" || -z "$nginx_pid" ]]; then
+    systemctl restart nginx
 fi
