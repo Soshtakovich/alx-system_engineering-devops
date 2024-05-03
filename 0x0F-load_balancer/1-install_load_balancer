@@ -34,11 +34,11 @@ defaults
   timeout server 15s
   timeout http-request 10s
 
-frontend clickviral-tech-frontend
+frontend zakesmatsimbe-tech-frontend
     bind *:80
-    default_backend clickviral-tech-backend
+    default_backend zakesmatsimbe-tech-backend
 
-backend clickviral-tech-backend
+backend zakesmatsimbe-tech-backend
     balance roundrobin
     server 344592-web-01 54.209.65.33:80 check
     server 344592-web-02 34.203.75.96:80 check
