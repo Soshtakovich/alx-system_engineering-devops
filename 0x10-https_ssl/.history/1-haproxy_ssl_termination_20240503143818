@@ -34,19 +34,19 @@ defaults
         errorfile 503 /etc/haproxy/errors/503.http
         errorfile 504 /etc/haproxy/errors/504.http
 
-frontend zakesmatsimbe-frontend
+frontend clickviral-frontend
         bind *:80
         mode http
         http-request redirect scheme https code 301 unless { ssl_fc }
         http-request set-header X_Forwarded-Proto http
-        default_backend zakesmatsimbe-backend
+        default_backend clickviral-backend
 
-frontend zakesmatsimbe-frontend-https
-        bind *:443 ssl crt /etc/haproxy/certs/zakesmatsimbe.tech.pem
+frontend clickviral-frontend-https
+        bind *:443 ssl crt /etc/haproxy/certs/clickviral.tech.pem
         http-request set-header X-Forwarded-Proto https
-        default_backend zakesmatsimbe-backend
+        default_backend clickviral-backend
 
-backend zakesmatsimbe-backend
+backend clickviral-backend
         balance roundrobin
-        server 151666-web-01 54.209.65.33:80 check
-        server 151666-web-02 34.203.75.96:80 check
+        server 151666-web-01 100.25.190.21:80 check
+        server 151666-web-02 54.160.77.90:80 check

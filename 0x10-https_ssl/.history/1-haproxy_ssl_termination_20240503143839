@@ -48,5 +48,5 @@ frontend zakesmatsimbe-frontend-https
 
 backend zakesmatsimbe-backend
         balance roundrobin
-        server 151666-web-01 54.209.65.33:80 check
-        server 151666-web-02 34.203.75.96:80 check
+        server 151666-web-01 100.25.190.21:80 check
+        server 151666-web-02 54.160.77.90:80 check
