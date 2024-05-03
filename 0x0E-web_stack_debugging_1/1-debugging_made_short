@@ -1,10 +1,6 @@
 #!/usr/bin/env bash
-# Installing new server to serve content
+# configures a server to listening on port 80 of all servers active IPv4 IPs
 
-nginx -t
-nginx_pid=$(pidof nginx)
-occupied_port=$(netstat -tln | grep ':80')
-
-if [[ -n "$occupied_port" || -z "$nginx_pid" ]]; then
-    systemctl restart nginx
-fi
+sudo sed -i "s/8080/80/" /etc/nginx/sites-enabled/default
+sudo service nginx restart
+echo "" | sudo dd status=none of=/run/nginx.pid

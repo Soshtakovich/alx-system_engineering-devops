@@ -1,41 +1,5 @@
 #!/usr/bin/env bash
-# Setting up server to curl port 80 with no issues
-#apt-get update
-#apt-get -y install curl
-#rm /etc/nginx/sites-available/*
-#rm /etc/nginx/sites-enabled/*~
-#sed -i 's/8080/80/g' /etc/nginx/sites-enabled/default
-#sudo service nginx restart
+# configures a server to listening on port 80 of all servers active IPv4 IPs
 
-
-# Check if Nginx service is running
-nginx_status=$(systemctl is-active nginx)
-if [[ $nginx_status != "active" ]]; then
-    echo "Nginx is not running. Starting Nginx..."
-    sudo systemctl start nginx
-else
-    echo "Nginx is already running."
-fi
-
-# Check Nginx configuration file for errors
-nginx_config_test=$(nginx -t 2>&1)
-if [[ $nginx_config_test == *"successful"* ]]; then
-    echo "Nginx configuration test passed."
-else
-    echo "Nginx configuration test failed. Check the configuration file for errors."
-    exit 1
-fi
-
-# Check if there are any processes already listening on port 80
-port_80_status=$(sudo netstat -tuln | grep ':80 ')
-if [[ -n "$port_80_status" ]]; then
-    echo "Another process is already listening on port 80:"
-    echo "$port_80_status"
-    exit 1
-fi
-
-# Restart Nginx service
-echo "Restarting Nginx service..."
-sudo systemctl restart nginx
-
-echo "Nginx is now listening on port 80."
+sudo ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+sudo service nginx restart
